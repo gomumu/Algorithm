@@ -59,6 +59,16 @@ void Sort::quickSort(std::vector<int>& arr, int begin, int last) {
 	}
 }
 
+void Sort::heapSort(std::vector<int>& arr, int n) {
+	buildHeap(arr, n);
+	for (int i = n-1; i >= 0; --i) {
+		int tmp = arr.at(i);
+		arr.at(i) = arr.at(0);
+		arr.at(0) = tmp;
+		heapify(arr, 1, i);
+	}
+}
+
 int Sort::largest(std::vector<int> arr, int last) {
 	int idx = 0;
 	for (int i = 0; i <= last; ++i) {
@@ -113,6 +123,39 @@ int Sort::partition(std::vector<int>& arr, int begin, int last) {
 	arr.at(i) = arr.at(last);
 	arr.at(last) = tmp;
 	return i;
+}
+
+void Sort::buildHeap(std::vector<int>& arr, int last) {
+	// 리프를 제외한 노드들에 대해서 heapify
+	for (int i = last/2; i > 0; --i) {
+		heapify(arr, i, last);
+	}
+}
+
+void Sort::heapify(std::vector<int>& arr, int root, int n) {
+	int left = root * 2;
+	int right = root * 2 + 1;
+
+	int smaller;
+	//right가 있는경우
+	if (right <= n) {
+		if (arr.at(left-1) < arr.at(right-1)) {
+			smaller = left;
+		} else {
+			smaller = right;
+		}
+	//right가 없는 경우
+	} else if (left <= n) {
+		smaller = left;
+	} else
+		return;
+
+	if (arr.at(smaller-1) < arr.at(root-1)) {
+		int tmp = arr.at(root-1);
+		arr.at(root-1) = arr.at(smaller-1);
+		arr.at(smaller-1) = tmp;
+		heapify(arr,smaller,n);
+	}
 }
 
 } // sort

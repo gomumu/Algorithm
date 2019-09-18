@@ -9,30 +9,37 @@ int main()
 	std::vector<int> val3 = val;
 	std::vector<int> val4 = val;
 	std::vector<int> val5 = val;
-	my::sort::Sort::selectionSort(val1, val.size()-1);
-	for (int i = 0; i < val.size(); ++i) {
-		printf("%d ", val1[i]);
-	}
-	std::cout<<std::endl;
-	my::sort::Sort::bubbleSort(val2, val.size() -1);
-	for (int i = 0; i < val.size(); ++i) {
-		printf("%d ", val2[i]);
-	}
-	std::cout << std::endl;
-	my::sort::Sort::insertSort(val3, val.size() - 1);
-	for (int i = 0; i < val.size(); ++i) {
-		printf("%d ", val3[i]);
-	}
-	std::cout << std::endl;
-	my::sort::Sort::mergeSort(val4, 0, val.size()-1);
-	for (int i = 0; i < val.size(); ++i) {
-		printf("%d ", val4[i]);
-	}
-	std::cout << std::endl;
+	std::vector<int> val6 = val;
+	//my::sort::Sort::selectionSort(val1, val.size()-1);
+	//for (int i = 0; i < val.size(); ++i) {
+	//	printf("%d ", val1[i]);
+	//}
+	//std::cout<<std::endl;
+	//my::sort::Sort::bubbleSort(val2, val.size() -1);
+	//for (int i = 0; i < val.size(); ++i) {
+	//	printf("%d ", val2[i]);
+	//}
+	//std::cout << std::endl;
+	//my::sort::Sort::insertSort(val3, val.size() - 1);
+	//for (int i = 0; i < val.size(); ++i) {
+	//	printf("%d ", val3[i]);
+	//}
+	//std::cout << std::endl;
+	//my::sort::Sort::mergeSort(val4, 0, val.size()-1);
+	//for (int i = 0; i < val.size(); ++i) {
+	//	printf("%d ", val4[i]);
+	//}
+	//std::cout << std::endl;
 
-	my::sort::Sort::quickSort(val5, 0, val.size() - 1);
+	//my::sort::Sort::quickSort(val5, 0, val.size() - 1);
+	//for (int i = 0; i < val.size(); ++i) {
+	//	printf("%d ", val5[i]);
+	//}
+	//std::cout << std::endl;
+	
+	my::sort::Sort::heapSort(val6, val6.size());
 	for (int i = 0; i < val.size(); ++i) {
-		printf("%d ", val5[i]);
+		printf("%d ", val6[i]);
 	}
 	std::cout << std::endl;
 	return 0;

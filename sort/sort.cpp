@@ -69,6 +69,54 @@ void Sort::heapSort(std::vector<int>& arr, int n) {
 	}
 }
 
+void Sort::radixSort(std::vector<int>& arr, int n, int k) {
+	std::vector<std::vector<int>> tmp_arr;
+	for (int i = 0; i < 9; ++i) {
+		std::vector<int> v;
+		tmp_arr.push_back(v);
+	}
+	int digit = 1;
+
+	for (int i = 0; i < k; ++i) {
+		for (int num : arr) {
+			tmp_arr[(num / digit) % 10].push_back(num);
+		}
+		arr.clear();
+		for (int i = 0; i < 9; ++i) {
+			std::vector<int> v = tmp_arr.at(i);
+			for (int num : v) {
+				arr.push_back(num);
+			}
+			tmp_arr[i].clear();
+		}
+		digit *= 10;
+	}
+}
+
+std::vector<int> Sort::countingSort(std::vector<int>& a, int k, int n) {
+	std::vector<int> c;
+	std::vector<int> b;
+
+	for (int i = 0; i < k; ++i) {
+		c.push_back(0);
+		b.push_back(0);
+	}
+
+	for (int i = 0; i < n; ++i) {
+		c[a[i] -1]++;
+	}
+
+	for (int i = 0; i < k; ++i) {
+		c[i] = i > 0 ? c[i] + c[i-1]: c[i];
+	}
+
+	for (int i = n-1; i >= 0; --i) {
+		b[c[a[i] - 1]] = a[i];
+		c[a[i] - 1]--;
+	}
+	return b;
+}
+
 int Sort::largest(std::vector<int> arr, int last) {
 	int idx = 0;
 	for (int i = 0; i <= last; ++i) {

@@ -11,6 +11,8 @@ namespace my { namespace sort {
 		static void mergeSort(std::vector<int>& arr, int begin, int last);
 		static void quickSort(std::vector<int>& arr, int begin, int last);
 		static void heapSort(std::vector<int>& arr, int n);
+		static void radixSort(std::vector<int>& arr, int n, int k);
+		static std::vector<int> countingSort(std::vector<int>& a, int k, int n);
 	private:
 		static int largest(std::vector<int> arr, int last);
 		static void merge(std::vector<int>& arr, int begin, int center, int last);
